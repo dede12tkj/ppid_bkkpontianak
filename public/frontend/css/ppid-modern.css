@@ -1,0 +1,212 @@
+/* ==========================================================================
+   PPID BKK Pontianak - tampilan modern (dimuat SETELAH style.css)
+   Prinsip: latar terang netral, satu warna merek (teal), tipografi Inter,
+   banyak ruang kosong, kartu bergaris halus, tanpa ornamen berlebihan.
+   Ubah warna cukup dari variabel di bawah.
+   ========================================================================== */
+:root {
+    --ink: #0b2b27;
+    --muted: #5b6b68;
+    --line: #e2eae8;
+    --bg: #f6f9f8;
+    --surface: #ffffff;
+    --brand: #007c85;
+    --brand-deep: #005f66;
+    --brand-soft: #e6f3f3;
+    --accent: #d6df21;
+    --radius: 16px;
+    --shadow-sm: 0 1px 2px rgba(11, 43, 39, .06), 0 1px 3px rgba(11, 43, 39, .04);
+    --shadow-md: 0 8px 24px rgba(11, 43, 39, .08);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Inter', 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif !important;
+    background: var(--bg) !important;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.65;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: inherit !important;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    text-transform: none !important;
+}
+
+a { transition: color .2s, background-color .2s, border-color .2s, box-shadow .2s, transform .2s; }
+
+/* ---------- Topbar ---------- */
+.ppid-topbar { background: var(--ink); color: #cfe3df; font-size: 12.5px; }
+.ppid-topbar .container { display: flex; align-items: center; gap: 24px; height: 38px; }
+.ppid-ticker { flex: 1; overflow: hidden; white-space: nowrap; }
+.ppid-ticker span { display: inline-block; padding-left: 100%; animation: ppid-ticker 38s linear infinite; }
+.ppid-ticker strong { color: #fff; font-weight: 600; }
+@keyframes ppid-ticker { to { transform: translateX(-100%); } }
+.ppid-topbar-social { display: flex; gap: 14px; }
+.ppid-topbar-social a { color: #9fbdb7; font-size: 13px; }
+.ppid-topbar-social a:hover { color: #fff; }
+@media (prefers-reduced-motion: reduce) { .ppid-ticker span { animation: none; padding-left: 0; } }
+
+/* ---------- Header / navbar ---------- */
+.ppid-header {
+    position: sticky; top: 0; z-index: 1030;
+    background: rgba(255, 255, 255, .88);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid var(--line);
+}
+.ppid-header .navbar { padding: 12px 0; }
+.ppid-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.ppid-brand img { height: 42px; width: auto; }
+.ppid-brand b { display: block; font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.2; }
+.ppid-brand small { display: block; font-size: 11.5px; color: var(--muted); font-weight: 500; }
+.ppid-header .navbar-nav { gap: 2px; }
+.ppid-header .nav-link {
+    color: var(--muted) !important; font-size: 14px; font-weight: 500;
+    padding: 8px 14px !important; border-radius: 999px; text-transform: none !important;
+}
+.ppid-header .nav-link:hover { color: var(--ink) !important; background: var(--bg); }
+.ppid-header .nav-link.active { color: var(--brand-deep) !important; background: var(--brand-soft); }
+.ppid-header .nav-link.ppid-ext { border: 1px solid var(--line); margin-left: 8px; }
+.ppid-header .nav-link.ppid-ext:hover { border-color: var(--brand); color: var(--brand-deep) !important; }
+.ppid-header .navbar-toggler { border: 1px solid var(--line); border-radius: 10px; color: var(--ink); padding: 6px 10px; }
+.ppid-header .navbar-toggler:focus { box-shadow: 0 0 0 3px var(--brand-soft); }
+@media (max-width: 991px) {
+    .ppid-header .navbar-collapse { padding: 12px 0 8px; }
+    .ppid-header .nav-link.ppid-ext { margin-left: 0; }
+}
+
+/* ---------- Hero ---------- */
+.ppid-hero {
+    background:
+        radial-gradient(900px 300px at 85% -10%, rgba(0, 124, 133, .14), transparent 60%),
+        radial-gradient(600px 240px at 0% 0%, rgba(214, 223, 33, .12), transparent 60%),
+        linear-gradient(180deg, #eaf4f3 0%, var(--bg) 100%);
+    padding: 56px 0 40px;
+    text-align: center;
+}
+.ppid-eyebrow {
+    display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--brand-deep);
+    background: var(--surface); border: 1px solid var(--line);
+    padding: 6px 14px; border-radius: 999px; margin-bottom: 18px;
+}
+.ppid-hero h1 {
+    font-size: clamp(1.7rem, 3.6vw, 2.75rem); font-weight: 700; line-height: 1.2;
+    max-width: 820px; margin: 0 auto;
+}
+
+/* ---------- Judul seksi ---------- */
+.section-title { margin-bottom: 2rem !important; }
+.section-title::before, .section-title::after { display: none !important; }
+.section-title h1, .section-title h2 { font-size: clamp(1.35rem, 2.4vw, 1.9rem); font-weight: 700; }
+.section-title p { color: var(--muted); max-width: 680px; margin: 10px auto 0; }
+hr { border: 0; border-top: 1px solid var(--line); opacity: 1; margin: 2rem 0; }
+
+/* ---------- Kartu menu PPID ---------- */
+.grid-6 { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important; gap: 14px !important; }
+.grid-6 > a { text-decoration: none; }
+.nav-card {
+    height: 100% !important; min-height: 140px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    background: var(--surface) !important; border: 1px solid var(--line);
+    border-radius: var(--radius) !important; box-shadow: var(--shadow-sm) !important;
+    padding: 20px 12px !important;
+}
+.nav-card img {
+    width: 52px !important; height: 52px !important; padding: 9px; margin-bottom: 12px !important;
+    background: var(--brand-soft); border-radius: 14px;
+}
+.nav-card p { margin: 0; font-size: 14px !important; font-weight: 600 !important; color: var(--ink) !important; }
+.nav-card:hover { transform: translateY(-3px) !important; border-color: var(--brand); box-shadow: var(--shadow-md) !important; }
+.nav-card.active { background: var(--brand-soft) !important; border-color: var(--brand) !important; transform: none !important; }
+.nav-card.active img { background: var(--surface); }
+.nav-card.active p { color: var(--brand-deep) !important; }
+
+/* ---------- Tombol aksi beranda ---------- */
+.action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.action-card {
+    display: flex; align-items: center; gap: 14px; padding: 18px 20px;
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: var(--shadow-sm); color: var(--ink); text-decoration: none;
+}
+.action-card .ico {
+    flex: none; width: 44px; height: 44px; display: grid; place-items: center;
+    background: var(--brand); color: #fff; border-radius: 12px; font-size: 20px;
+}
+.action-card b { display: block; font-size: 15px; font-weight: 600; line-height: 1.3; }
+.action-card small { color: var(--muted); font-size: 12.5px; }
+.action-card .go { margin-left: auto; color: var(--muted); }
+.action-card:hover { border-color: var(--brand); box-shadow: var(--shadow-md); transform: translateY(-2px); color: var(--ink); }
+.action-card:hover .go { color: var(--brand); transform: translateX(3px); }
+@media (max-width: 767px) { .action-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Tombol umum ---------- */
+.btn { border-radius: 12px !important; font-weight: 600; }
+.btn-kemenkes, .btn-primary { background: var(--brand) !important; border-color: var(--brand) !important; color: #fff !important; }
+.btn-kemenkes:hover, .btn-primary:hover { background: var(--brand-deep) !important; border-color: var(--brand-deep) !important; }
+.shadow { box-shadow: var(--shadow-sm) !important; }
+
+/* ---------- Accordion / FAQ ---------- */
+.accordion.shadow { box-shadow: none !important; }
+.accordion-item {
+    border: 1px solid var(--line) !important; border-radius: 14px !important;
+    margin-bottom: 10px; overflow: hidden; background: var(--surface);
+}
+.accordion-button { font-weight: 600; color: var(--ink); background: var(--surface); box-shadow: none !important; padding: 18px 20px; }
+.accordion-button:not(.collapsed) { background: var(--brand-soft); color: var(--brand-deep); }
+.accordion-body { color: #31423f; padding: 18px 20px; }
+
+/* ---------- Konten, tabel, kartu bawaan ---------- */
+.card { border: 1px solid var(--line) !important; border-radius: var(--radius) !important; box-shadow: var(--shadow-sm); }
+.table { --bs-table-bg: transparent; border-color: var(--line); }
+.table thead th { background: var(--brand-soft); color: var(--brand-deep); border-bottom: 0; font-weight: 600; font-size: 13.5px; }
+.table td { vertical-align: middle; font-size: 14.5px; }
+.table-responsive { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.page-link { color: var(--brand-deep); }
+.page-item.active .page-link { background: var(--brand); border-color: var(--brand); }
+.form-control, .form-select { border-radius: 12px; border-color: var(--line); }
+.form-control:focus, .form-select:focus { border-color: var(--brand); box-shadow: 0 0 0 3px var(--brand-soft); }
+a { color: var(--brand-deep); }
+
+/* ---------- Penghitung pengunjung & elemen melayang ---------- */
+.visitor-counter { bottom: 90px !important; right: 18px !important; }
+.counter-card {
+    background: var(--surface) !important; color: var(--ink) !important;
+    border: 1px solid var(--line); border-radius: 14px !important;
+    box-shadow: var(--shadow-md) !important; padding: 10px 14px !important; font-size: 12px !important;
+}
+.counter-card i { color: var(--brand); font-size: 20px !important; }
+.counter-card:hover { transform: none !important; }
+.counter-card .label { color: var(--muted); opacity: 1 !important; font-weight: 600; }
+.social-media-icons { display: none !important; } /* sosmed sudah ada di topbar & footer */
+.back-to-top { background: var(--brand) !important; border-color: var(--brand) !important; border-radius: 12px !important; box-shadow: var(--shadow-md); }
+
+/* ---------- Footer ---------- */
+.ppid-footer { background: var(--ink); color: #b9d0cb; margin-top: 4rem; }
+.ppid-footer .wrap { padding: 56px 0 40px; }
+.ppid-footer h3 { color: #fff; font-size: 15px; font-weight: 600; margin-bottom: 16px; letter-spacing: 0; }
+.ppid-footer p { font-size: 14px; margin-bottom: 10px; }
+.ppid-footer a { color: #b9d0cb; text-decoration: none; }
+.ppid-footer a:hover { color: #fff; }
+.ppid-footer .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.ppid-footer .brand img { height: 52px; }
+.ppid-footer .brand b { color: #fff; font-size: 16px; }
+.ppid-footer .contact li { display: flex; gap: 10px; margin-bottom: 10px; font-size: 14px; list-style: none; }
+.ppid-footer .contact { padding: 0; margin: 0; }
+.ppid-footer .contact i { color: var(--accent); margin-top: 4px; }
+.ppid-footer .social { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.ppid-footer .social a {
+    width: 36px; height: 36px; display: grid; place-items: center; border-radius: 10px;
+    background: rgba(255, 255, 255, .08); color: #fff; font-size: 14px;
+}
+.ppid-footer .social a:hover { background: var(--brand); }
+.ppid-footer .map { border-radius: 14px; overflow: hidden; border: 1px solid rgba(255, 255, 255, .12); }
+.ppid-footer .map iframe { display: block; width: 100%; height: 230px; border: 0; filter: grayscale(.25); }
+.ppid-footer .copy { border-top: 1px solid rgba(255, 255, 255, .1); padding: 18px 0; font-size: 13px; text-align: center; color: #86a49e; }
+
+/* Layar kecil: counter pengunjung disembunyikan supaya tidak menutupi konten */
+@media (max-width: 767px) { .visitor-counter { display: none !important; } }
