@@ -13,7 +13,6 @@
                 <p>Layanan ini merupakan sarana layanan online bagi pemohon informasi publik sebagai salah satu wujud
                     pelaksanaan keterbukaan informasi publik pada Balai Kekarantinaan Kesehatan Kelas I Pontianak </p>
             </div>
-            @include('includes.frontend.ppid')
             <hr>
             <div class="action-grid">
                 <a href="{{ $form?->form_permohonan_informasi ?? '#' }}" target="_blank" rel="noopener" class="action-card">
